@@ -64,25 +64,25 @@ class References extends Component {
                 </FormGroup>
 
                 <FormGroup>
-                  <Col sm="12" md={{ size: 8, offset: 2 }}>
+                  <Col sm="12" md={{ size: 10, offset: 1 }}>
                     <Field name="employerName" placeholder="Employer Name" type="text" className={'form-control' + (errors.employerName && touched.employerName ? ' is-invalid' : '')} />
                     <ErrorMessage name="employerName" component="div" className="invalid-feedback" />
                   </Col>
                 </FormGroup>
                 <FormGroup>
-                  <Col sm="12" md={{ size: 8, offset: 2 }}>
+                  <Col sm="12" md={{ size: 10, offset: 1 }}>
                     <Field name="telNumber" placeholder="Telephone #" type="text" className={'form-control' + (errors.telNumber && touched.telNumber ? ' is-invalid' : '')} />
                     <ErrorMessage name="telNumber" component="div" className="invalid-feedback" />
                   </Col>
                 </FormGroup>
                 <FormGroup>
-                  <Col sm="12" md={{ size: 8, offset: 2 }}>
+                  <Col sm="12" md={{ size: 10, offset: 1 }}>
                     <Field name="email" placeholder="Email" type="text" className={'form-control' + (errors.firstName && touched.firstName ? ' is-invalid' : '')} />
                     <ErrorMessage name="email" component="div" className="invalid-feedback" />
                   </Col>
                 </FormGroup>
                 <FormGroup>
-                  <Col sm="12" md={{ size: 8, offset: 2 }}>
+                  <Col sm="12" md={{ size: 10, offset: 1 }}>
                     <Field name="address" placeholder="Address" type="text" className={'form-control' + (errors.firstName && touched.firstName ? ' is-invalid' : '')} />
                     <ErrorMessage name="address" component="div" className="invalid-feedback" />
                   </Col>

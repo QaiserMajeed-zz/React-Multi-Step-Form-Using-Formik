@@ -66,31 +66,31 @@ export  class EmpHistory extends Component {
                 </FormGroup>
 
                 <FormGroup>
-                  <Col sm="12" md={{ size: 8, offset: 2 }}>
+                  <Col sm="12" md={{ size: 10, offset: 1 }}>
                     <Field name="firstName" placeholder="First Name" type="text" className={'form-control' + (errors.firstName && touched.firstName ? ' is-invalid' : '')} />
                     <ErrorMessage name="firstName" component="div" className="invalid-feedback" />
                   </Col>
                 </FormGroup>
                 <FormGroup>
-                  <Col sm="12" md={{ size: 8, offset: 2 }}>
+                  <Col sm="12" md={{ size: 10, offset: 1 }}>
                     <Field name="lastName" placeholder="Last Name" type="text" className={'form-control' + (errors.firstName && touched.firstName ? ' is-invalid' : '')} />
                     <ErrorMessage name="lastName" component="div" className="invalid-feedback" />
                   </Col>
                 </FormGroup>
                 <FormGroup>
-                  <Col sm="12" md={{ size: 8, offset: 2 }}>
+                  <Col sm="12" md={{ size: 10, offset: 1 }}>
                     <Field name="email" placeholder="Email" type="text" className={'form-control' + (errors.firstName && touched.firstName ? ' is-invalid' : '')} />
                     <ErrorMessage name="email" component="div" className="invalid-feedback" />
                   </Col>
                 </FormGroup>
                 <FormGroup>
-                  <Col sm="12" md={{ size: 8, offset: 2 }}>
+                  <Col sm="12" md={{ size: 10, offset: 1 }}>
                     <Field name="password" type="password" placeholder="Password" className={'form-control' + (errors.password && touched.password ? ' is-invalid' : '')} />
                     <ErrorMessage name="password" component="div" className="invalid-feedback" />
                   </Col>
                 </FormGroup>
                 <FormGroup>
-                  <Col sm="12" md={{ size: 8, offset: 2 }}>
+                  <Col sm="12" md={{ size: 10, offset: 1 }}>
                     <Field name="confirmPassword" type="password" placeholder='Confirm Password' className={'form-control' + (errors.confirmPassword && touched.confirmPassword ? ' is-invalid' : '')} />
                     <ErrorMessage name="confirmPassword" component="div" className="invalid-feedback" />
                   </Col>

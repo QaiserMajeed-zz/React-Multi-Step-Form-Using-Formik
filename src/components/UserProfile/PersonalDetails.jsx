@@ -98,12 +98,12 @@ class PersonalDetails extends Component {
               <Form>
                 <FormGroup>
                   <Col sm="12" md={{ size: 9, offset: 4 }}>
-                    <FontAwesomeIcon style={{ 'color': "#007bff" }} size={'5x'} onClick={this.saveAndContinue} icon={faUserCircle} />
+                    <FontAwesomeIcon style={{ 'color': "#007bff" }} size={'3x'} onClick={this.saveAndContinue} icon={faUserCircle} />
                   </Col>
                 </FormGroup>
 
                 <FormGroup>
-                  <Col sm="12" md={{ size: 8, offset: 2 }}>
+                  <Col sm="12" md={{ size: 10, offset: 1 }}>
                     <Field
                       name={'dateOfBirth'}
                       id={'dateOfBirth'}
@@ -116,7 +116,7 @@ class PersonalDetails extends Component {
                   </Col>
                 </FormGroup>
                 <FormGroup>
-                  <Col sm="12" md={{ size: 8, offset: 2 }}>
+                  <Col sm="12" md={{ size: 10, offset: 1 }}>
                     <ReactFlagsSelect
                     placeholder="Select Nationality"
                       searchable={true}
@@ -139,7 +139,7 @@ class PersonalDetails extends Component {
                   </Col>
                 </FormGroup>
                 <FormGroup>
-                  <Col sm="12" md={{ size: 8, offset: 2 }}>
+                  <Col sm="12" md={{ size: 10, offset: 1 }}>
                     <select className="form-control" name="Gender">
                       <option value="Male">Male</option>
                       <option value="Female">Female</option>
@@ -147,25 +147,25 @@ class PersonalDetails extends Component {
                   </Col>
                 </FormGroup>
                 <FormGroup>
-                  <Col sm="12" md={{ size: 8, offset: 2 }}>
+                  <Col sm="12" md={{ size: 10, offset: 1 }}>
                     <Field name="home" type="text" placeholder="Home" className={'form-control' + (errors.password && touched.password ? ' is-invalid' : '')} />
                     <ErrorMessage name="home" component="div" className="invalid-feedback" />
                   </Col>
                 </FormGroup>
                 <FormGroup>
-                  <Col sm="12" md={{ size: 8, offset: 2 }}>
+                  <Col sm="12" md={{ size: 10, offset: 1 }}>
                     <Field name="mobile" type="text" placeholder='Mobile' className={'form-control' + (errors.confirmPassword && touched.confirmPassword ? ' is-invalid' : '')} />
                     <ErrorMessage name="mobile" component="div" className="invalid-feedback" />
                   </Col>
                 </FormGroup>
                 <FormGroup>
-                  <Col sm="12" md={{ size: 8, offset: 2 }}>
+                  <Col sm="12" md={{ size: 10, offset: 1 }}>
                     <Field name="currentAddress" type="text" placeholder='Current Address' className={'form-control' + (errors.confirmPassword && touched.confirmPassword ? ' is-invalid' : '')} />
                     <ErrorMessage name="currentAddress" component="div" className="invalid-feedback" />
                   </Col>
                 </FormGroup>
                 <FormGroup>
-                  <Col sm="12" md={{ size: 8, offset: 2 }}>
+                  <Col sm="12" md={{ size: 10, offset: 1 }}>
                     <Field name="postCode" type="text" placeholder='Postal Code' className={'form-control' + (errors.confirmPassword && touched.confirmPassword ? ' is-invalid' : '')} />
                     <ErrorMessage name="postCode" component="div" className="invalid-feedback" />
                   </Col>

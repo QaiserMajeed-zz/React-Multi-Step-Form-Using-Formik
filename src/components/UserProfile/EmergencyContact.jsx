@@ -65,19 +65,19 @@ class EmergencyContact extends Component {
                 </FormGroup>
 
                 <FormGroup>
-                  <Col sm="12" md={{ size: 8, offset: 2 }}>
+                  <Col sm="12" md={{ size: 10, offset: 1 }}>
                     <Field name="fullName" placeholder="Full Name" type="text" className={'form-control' + (errors.firstName && touched.firstName ? ' is-invalid' : '')} />
                     <ErrorMessage name="fullName" component="div" className="invalid-feedback" />
                   </Col>
                 </FormGroup>
                 <FormGroup>
-                  <Col sm="12" md={{ size: 8, offset: 2 }}>
+                  <Col sm="12" md={{ size: 10, offset: 1 }}>
                     <Field name="lastName" placeholder="Last Name" type="text" className={'form-control' + (errors.firstName && touched.firstName ? ' is-invalid' : '')} />
                     <ErrorMessage name="lastName" component="div" className="invalid-feedback" />
                   </Col>
                 </FormGroup>
                 <FormGroup>
-                  <Col sm="12" md={{ size: 8, offset: 2 }}>
+                  <Col sm="12" md={{ size: 10, offset: 1 }}>
                     <Field name="phoneNo" placeholder="Phone Number" type="text" className={'form-control' + (errors.firstName && touched.firstName ? ' is-invalid' : '')} />
                     <ErrorMessage name="email" component="div" className="invalid-feedback" />
                   </Col>
