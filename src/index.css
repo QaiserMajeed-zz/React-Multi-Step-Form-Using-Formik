@@ -93,7 +93,6 @@ form:before {
 }
 
 #root {
-  height: 100vh;
   background-image: url('/BackgroundImage.jpg');
   background-repeat: no-repeat;
   background-position: center;
