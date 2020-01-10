@@ -13,10 +13,10 @@ class App extends Component {
       <BrowserRouter basename={'/'}>
         <Container>
           <Switch>
-            <Route exact path={`/`} component={LayoutPage} />
-            <Route exact path={`/login`} component={Login} />
-            <Route exact path={`/register`} component={Register} />
-            <Route exact path={`/profile`} component={ProfileComponent} />
+            <Route exact path={`/`} render={(props) => ( <LayoutPage {...props}/> )} />
+            <Route exact path={`/login`} render={(props) => ( <Login {...props}/> )} />
+            <Route exact path={`/register`} render={(props) => ( <Register {...props}/> )} />
+            <Route exact path={`/profile`} render={(props) => ( <ProfileComponent {...props}/> )} />
           </Switch>
         </Container>
       </BrowserRouter>

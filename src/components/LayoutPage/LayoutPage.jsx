@@ -4,11 +4,12 @@ import LayoutText from './LayoutText';
 import NavBarComponent from './../common/NavBar';
 
 const LayoutPage = (props) => {
-
+    console.log("Layout", props)
     return (
         <Row>
+
             <Col sm="12" md={{ size: 12 }}>
-                <NavBarComponent />
+                <NavBarComponent {...props} />
                 <LayoutText />
             </Col>
         </Row>

@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
 import { FormGroup, Col, Button } from "reactstrap";
 import ReactFlagsSelect from 'react-flags-select';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 import {
     Formik,
     Form,
@@ -10,6 +12,7 @@ import {
 import * as Yup from 'yup';
 import Label from "reactstrap/lib/Label";
 import NavbarComponent from "./common/NavBar";
+import AuthService from './../services/Auth'
 
 class UserDetails extends Component {
     saveAndContinue = e => {
@@ -21,37 +24,46 @@ class UserDetails extends Component {
         // const { values } = this.props;
         return (
             <Fragment>
-                <NavbarComponent />
+                <NavbarComponent {...this.props} />
                 <div class="d-flex align-items-center flex-column  h-100 text-white" >
                     <h1 className="display-4" style={{ padding: '5px', color: 'white', fontSize: '50px' }}>Login</h1>
                     <div className="col-md-4" style={{ paddingTop: '15px', borderRadius: '10px' }} >
                         <Formik
                             initialValues={{
-                                userName: '',
+                                username: '',
                                 password: '',
                             }}
                             validationSchema={Yup.object().shape({
-                                userName: Yup.string()
+                                username: Yup.string()
                                     .required('User Name is required'),
                                 password: Yup.string()
                                     .min(6, 'Password must be at least 6 characters')
                                     .required('Password is required'),
                             })}
                             onSubmit={fields => {
-                                debugger
-                                // this.props.history('/profile')
-                                alert('SUCCESS!! :-)\n\n' + JSON.stringify(fields, null, 4))
-                                this.props.history.push("/profile");
 
+                                let auth = new AuthService();
+
+
+                                auth.signIn(fields).then(response => {
+                                    if (!response.is_error) {
+                                        alert('SUCCESS!! :-)\n\n' + JSON.stringify(fields, null, 4))
+                                        this.props.history.push("/profile");
+                                    }
+                                })
                             }}
                             render={({ errors, status, touched }) => (
                                 <Form>
-
+                                    <FormGroup>
+                                        <Col sm="12" md={{ size: 9, offset: 5 }}>
+                                            <FontAwesomeIcon style={{ 'color': "#007bff" }} size={'3x'}  icon={faSignInAlt} />
+                                        </Col>
+                                    </FormGroup>
 
                                     <FormGroup>
                                         <Col sm="12" md={{ size: 12, offset: 0 }}>
-                                            <Field name="userName" placeholder="User Name" type="text" className={'form-control' + (errors.firstName && touched.firstName ? ' is-invalid' : '')} />
-                                            <ErrorMessage name="userName" component="div" className="invalid-feedback" />
+                                            <Field name="username" placeholder="User Name" type="text" className={'form-control' + (errors.firstName && touched.firstName ? ' is-invalid' : '')} />
+                                            <ErrorMessage name="username" component="div" className="invalid-feedback" />
                                         </Col>
                                     </FormGroup>
 
@@ -63,8 +75,8 @@ class UserDetails extends Component {
                                     </FormGroup>
 
                                     <FormGroup>
-                                        <Button type="Submit" className="custom-button" style={{ float: 'right', backgroundColor: 'white' }}>
-                                           Log In
+                                        <Button type="Submit" className="blue-button">
+                                            Log In
 
                                         </Button>
 

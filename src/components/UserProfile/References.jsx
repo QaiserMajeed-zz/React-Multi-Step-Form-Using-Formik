@@ -1,113 +1,196 @@
-import React, { Component, Fragment } from "react";
-import { FormGroup, Col } from "reactstrap";
+import React, { Fragment } from "react";
+import { FormGroup, Col, Label } from "reactstrap";
+import { Collapse, CardBody, Card, CardHeader } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faArrowRight, faUserFriends } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import {
-  Formik,
-
-
-  Form,
   Field,
-
+  FieldArray,
   ErrorMessage,
 } from 'formik';
-import * as Yup from 'yup';
-import Label from "reactstrap/lib/Label";
+import { UncontrolledCollapse, Button } from 'reactstrap';
+export const References = ({ values, errors, touched, props }) =>
+  (
+    <Fragment>
 
-class References extends Component {
-  saveAndContinue = e => {
-    e.preventDefault();
-    this.props.nextStep();
-  };
+      <FormGroup>
+        <Col sm="12" md={{ size: 9, offset: 4 }}>
+          <FontAwesomeIcon style={{ 'color': "#007bff" }} size={'3x'} icon={faUser} />
+        </Col>
+      </FormGroup>
+      {/* {values.employmentReferences.length > 1 && <Example values={values.employmentReferences} />} */}
+      <FieldArray
+        name="employmentReferences"
+        render={({ insert, remove, push }) => (
+          <div>
+            {values.employmentReferences.length > 0 &&
+              values.employmentReferences.map((history, index) => (
+                (index + 1 == values.employmentReferences.length) ?
+                  <Fragment key={index}>
+                    <FormGroup>
+                      <Col sm="12" md={{ size: 10, offset: 1 }}>
+                        <Field name={`employmentReferences.${index}.employerName`} placeholder="Name" type="text" className={'form-control' + (errors.employerName && touched.employerName ? ' is-invalid' : '')} />
+                        <ErrorMessage name={`employmentReferences.${index}.employerName`} component="div" className="invalid-feedback" />
+                      </Col>
+                    </FormGroup>
+                    <FormGroup>
+                      <Col sm="12" md={{ size: 10, offset: 1 }}>
+                        <Field name={`employmentReferences.${index}.employerTelNumber`} placeholder="Telephone#" type="text" className={'form-control' + (errors.employerTelNumber && touched.employerTelNumber ? ' is-invalid' : '')} />
+                        <ErrorMessage name={`employmentReferences.${index}.employerTelNumber`} component="div" className="invalid-feedback" />
+                      </Col>
+                    </FormGroup>
+                    <FormGroup>
+                      <Col sm="12" md={{ size: 10, offset: 1 }}>
+                        <Field name={`employmentReferences.${index}.employerAddress`} placeholder="Employer Address" type="text" className={'form-control' + (errors.firstName && touched.firstName ? ' is-invalid' : '')} />
+                        <ErrorMessage name={`employmentReferences.${index}.employerAddress`} component="div" className="invalid-feedback" />
+                      </Col>
+                    </FormGroup>
+                    <FormGroup>
+                      <Col sm="12" md={{ size: 10, offset: 1 }}>
+                        <Field name={`employmentReferences.${index}.employerEmail`} placeholder="Employer Email" type="text" className={'form-control' + (errors.employerEmail && touched.employerEmail ? ' is-invalid' : '')} />
+                        <ErrorMessage name={`employmentReferences.${index}.employerEmail`} component="div" className="invalid-feedback" />
+                      </Col>
+                    </FormGroup>
 
-  back = e => {
-    e.preventDefault();
-    this.props.prevStep();
-  };
+                  </Fragment>
 
-  render() {
 
-    return (
-      <Fragment>
-        <h1 className="display-4" style={{ padding: '5px', color: 'white', fontSize: '30px' }}>References</h1>
-        <div className="col-md-4" style={{ backgroundColor: 'white', paddingTop: '15px', borderRadius: '10px' }} >
-          <Formik
-            initialValues={{
-              employerName: '',
-              telNumber: '',
-              address: '',
-              email: '',
 
-            }}
-            validationSchema={Yup.object().shape({
-              employerName: Yup.string()
-                .required('First Name is required'),
-              telNumber: Yup.string()
-                .required('Last Name is required'),
-              email: Yup.string()
-                .email('Email is invalid')
-                .required('Email is required'),
-              address: Yup.string()
-                .min(6, 'Password must be at least 6 characters')
-                .required('Password is required')
 
-            })}
-            onSubmit={fields => {
-              alert('SUCCESS!! :-)\n\n' + JSON.stringify(fields, null, 4))
-            }}
-            render={({ errors, status, touched }) => (
-              <Form>
-                <FormGroup>
-                  <Col sm="12" md={{ size: 9, offset: 4 }}>
-                    <FontAwesomeIcon style={{ 'color': "#007bff" }} size={'5x'} icon={faUserFriends} />
-                  </Col>
-                </FormGroup>
+                  :                   //LASTINDEX this is not to included the in the header card
+                  (<Fragment key={index}>
+                    <div onClick={() => {
 
-                <FormGroup>
-                  <Col sm="12" md={{ size: 10, offset: 1 }}>
-                    <Field name="employerName" placeholder="Employer Name" type="text" className={'form-control' + (errors.employerName && touched.employerName ? ' is-invalid' : '')} />
-                    <ErrorMessage name="employerName" component="div" className="invalid-feedback" />
-                  </Col>
-                </FormGroup>
-                <FormGroup>
-                  <Col sm="12" md={{ size: 10, offset: 1 }}>
-                    <Field name="telNumber" placeholder="Telephone #" type="text" className={'form-control' + (errors.telNumber && touched.telNumber ? ' is-invalid' : '')} />
-                    <ErrorMessage name="telNumber" component="div" className="invalid-feedback" />
-                  </Col>
-                </FormGroup>
-                <FormGroup>
-                  <Col sm="12" md={{ size: 10, offset: 1 }}>
-                    <Field name="email" placeholder="Email" type="text" className={'form-control' + (errors.firstName && touched.firstName ? ' is-invalid' : '')} />
-                    <ErrorMessage name="email" component="div" className="invalid-feedback" />
-                  </Col>
-                </FormGroup>
-                <FormGroup>
-                  <Col sm="12" md={{ size: 10, offset: 1 }}>
-                    <Field name="address" placeholder="Address" type="text" className={'form-control' + (errors.firstName && touched.firstName ? ' is-invalid' : '')} />
-                    <ErrorMessage name="address" component="div" className="invalid-feedback" />
-                  </Col>
-                </FormGroup>
-                
-                
-                <FormGroup>
-                  <button className="float-right border-0 bg-transparent" >
-                    <Label>Next</Label>
-                    <FontAwesomeIcon style={{ 'color': "#007bff" }} onClick={this.saveAndContinue} icon={faArrowRight} />
-                  </button>
-                  <button className="float-left border-0 bg-transparent" >
+                      remove(index)
+                    }
 
-                    <FontAwesomeIcon style={{ 'color': "#007bff" }} onClick={this.back} icon={faArrowLeft} />
-                    <Label>Back</Label>
-                  </button>
+                    }>
+Remove
+                    </div>
+                    <CardHeader color="blue" id={`toggler${index}`} style={{ marginBottom: '1rem' }}>
+                      {values.employmentReferences[index].employerName}
+                    </CardHeader>
+                    <UncontrolledCollapse toggler={`#toggler${index}`}>
+                      <Card>
+                        <CardBody>
 
-                </FormGroup>
-              </Form>
-            )}
-          />
-        </div>
-      </Fragment>
-    );
-  }
-}
+                          <FormGroup>
+                            <Col sm="12" md={{ size: 10, offset: 1 }}>
+                              <Field name={`employmentReferences.${index}.employerName`} placeholder="Name" type="text" className={'form-control' + (errors.employerName && touched.employerName ? ' is-invalid' : '')} />
+                              <ErrorMessage name={`employmentReferences.${index}.employerName`} component="div" className="invalid-feedback" />
+                            </Col>
+                          </FormGroup>
+                          <FormGroup>
+                            <Col sm="12" md={{ size: 10, offset: 1 }}>
+                              <Field name={`employmentReferences.${index}.employerTelNumber`} placeholder="Telephone#" type="text" className={'form-control' + (errors.employerTelNumber && touched.employerTelNumber ? ' is-invalid' : '')} />
+                              <ErrorMessage name={`employmentReferences.${index}.employerTelNumber`} component="div" className="invalid-feedback" />
+                            </Col>
+                          </FormGroup>
+                          <FormGroup>
+                            <Col sm="12" md={{ size: 10, offset: 1 }}>
+                              <Field name={`employmentReferences.${index}.employerAddress`} placeholder="Employer Address" type="text" className={'form-control' + (errors.firstName && touched.firstName ? ' is-invalid' : '')} />
+                              <ErrorMessage name={`employmentReferences.${index}.employerAddress`} component="div" className="invalid-feedback" />
+                            </Col>
+                          </FormGroup>
+                          <FormGroup>
+                            <Col sm="12" md={{ size: 10, offset: 1 }}>
+                              <Field name={`employmentReferences.${index}.employerEmail`} placeholder="Employer Email" type="text" className={'form-control' + (errors.employerEmail && touched.employerEmail ? ' is-invalid' : '')} />
+                              <ErrorMessage name={`employmentReferences.${index}.employerEmail`} component="div" className="invalid-feedback" />
+                            </Col>
+                          </FormGroup>
+                        </CardBody>
+                      </Card>
+                    </UncontrolledCollapse>
+                  </Fragment>)
 
-export default References;
+              ))}
+
+            <FormGroup >
+              <div className="float-right" style={{ color: 'rgb(0, 123, 255)' }} onClick={() => {
+                push({
+                  employerName: '',
+                  employerTelNumber: '',
+                  employerAddress: '',
+                  employerEmail: '',
+                })
+              }}>Add New Reference+</div>
+            </FormGroup>
+
+          </div>
+
+
+        )}
+      />
+
+    </Fragment>
+
+
+
+  );
+
+
+
+const Example = (index, values, errors, touched, props) => (
+
+
+  <Fragment>
+    {
+
+      values.values.map((history, index) => (
+        index + 1 != values.values.length ?
+          (<Fragment key={index}>
+            <CardHeader color="blue" id={`toggler`} style={{ marginBottom: '1rem' }}>
+              {history.employerName}
+            </CardHeader>
+            <UncontrolledCollapse toggler="#toggler">
+              <Card>
+                <CardBody>
+                  {history.employerName}
+                </CardBody>
+              </Card>
+            </UncontrolledCollapse>
+          </Fragment>) : ''
+      ))})
+  </Fragment>
+
+
+
+);
+const FormArray = (index, employmentReferences, errors, touched, props) => (
+
+
+  <Fragment key={index}>
+
+
+
+    <FormGroup>
+      <Col sm="12" md={{ size: 10, offset: 1 }}>
+        <Field name={`employmentReferences.${index}.employerName`} placeholder="Name" type="text" className={'form-control' + (errors.employerName && touched.employerName ? ' is-invalid' : '')} />
+        <ErrorMessage name={`employmentReferences.${index}.employerName`} component="div" className="invalid-feedback" />
+      </Col>
+    </FormGroup>
+    <FormGroup>
+      <Col sm="12" md={{ size: 10, offset: 1 }}>
+        <Field name={`employmentReferences.${index}.employerTelNumber`} placeholder="Telephone#" type="text" className={'form-control' + (errors.employerTelNumber && touched.employerTelNumber ? ' is-invalid' : '')} />
+        <ErrorMessage name={`employmentReferences.${index}.employerTelNumber`} component="div" className="invalid-feedback" />
+      </Col>
+    </FormGroup>
+    <FormGroup>
+      <Col sm="12" md={{ size: 10, offset: 1 }}>
+        <Field name={`employmentReferences.${index}.employerAddress`} placeholder="Employer Address" type="text" className={'form-control' + (errors.firstName && touched.firstName ? ' is-invalid' : '')} />
+        <ErrorMessage name={`employmentReferences.${index}.employerAddress`} component="div" className="invalid-feedback" />
+      </Col>
+    </FormGroup>
+    <FormGroup>
+      <Col sm="12" md={{ size: 10, offset: 1 }}>
+        <Field name={`employmentReferences.${index}.employerEmail`} placeholder="Employer Email" type="text" className={'form-control' + (errors.employerEmail && touched.employerEmail ? ' is-invalid' : '')} />
+        <ErrorMessage name={`employmentReferences.${index}.employerEmail`} component="div" className="invalid-feedback" />
+      </Col>
+    </FormGroup>
+
+  </Fragment>
+
+
+
+);
+

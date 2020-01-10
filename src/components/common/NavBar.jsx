@@ -13,6 +13,7 @@ import Button from 'reactstrap/lib/Button';
 import { Link } from 'react-router-dom';
 
 const NavbarComponent = (props) => {
+  console.log("Nav", props.location)
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -20,7 +21,9 @@ const NavbarComponent = (props) => {
   return (
     <div>
       <Navbar color="" light expand="md">
-        <NavbarBrand href="/">Job Portal</NavbarBrand>
+        <Link to='/'>
+          <NavbarBrand >Job Portal</NavbarBrand>
+        </Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -34,19 +37,22 @@ const NavbarComponent = (props) => {
               <NavLink href="/components/">Jobs</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/components/">Jobs</NavLink>
+              <NavLink href="/components/">Contact Us</NavLink>
             </NavItem>
           </Nav>
-          <Link to='./login'>
+          {(props.location.pathname === '/register' || props.location.pathname === '/') && <Link to='./login'>
             <Button className='custom-button'>
-
               Log In </Button>
-          </Link>
-          <Link to='./register'>
+          </Link>}
+          {(props.location.pathname === '/login' || props.location.pathname === '/') && <Link to='./register'>
             <Button className='custom-button'>
-
               Sign Up </Button>
-          </Link>
+
+          </Link>}
+          {props.location.pathname === '/profile' && <Link to='/'>
+            <Button className='custom-button'>
+              Log Out </Button>
+          </Link>}
         </Collapse>
       </Navbar>
     </div>
