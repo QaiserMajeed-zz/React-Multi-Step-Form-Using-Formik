@@ -54,9 +54,6 @@ export const References = ({ values, errors, touched, props }) =>
 
                   </Fragment>
 
-
-
-
                   :                   //LASTINDEX this is not to included the in the header card
                   (<Fragment key={index}>
                     <FormGroup className='float-right'>
