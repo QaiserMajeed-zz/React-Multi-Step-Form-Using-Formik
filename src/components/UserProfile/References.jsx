@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { FormGroup, Col, Label } from "reactstrap";
 import { Collapse, CardBody, Card, CardHeader } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faTrash } from '@fortawesome/free-solid-svg-icons';
 import {
   Field,
   FieldArray,
@@ -59,14 +59,14 @@ export const References = ({ values, errors, touched, props }) =>
 
                   :                   //LASTINDEX this is not to included the in the header card
                   (<Fragment key={index}>
-                    <div onClick={() => {
+                    <FormGroup className='float-right'>
 
-                      remove(index)
-                    }
+                      <FontAwesomeIcon
+                       onClick={() => remove(index)
+                      } style={{ 'color': "#007bff" }} size={'1x'} icon={faTrash} />
 
-                    }>
-Remove
-                    </div>
+                    </FormGroup>
+
                     <CardHeader color="blue" id={`toggler${index}`} style={{ marginBottom: '1rem' }}>
                       {values.employmentReferences[index].employerName}
                     </CardHeader>

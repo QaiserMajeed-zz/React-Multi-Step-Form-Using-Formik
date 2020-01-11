@@ -127,6 +127,12 @@ form:before {
   color:white !important;
 }
 .card-header{
-
+  color: white;
+  margin-bottom: 1rem;
+  width: 95%;
+  height: 33px;
+  border-radius: 8px;
+  padding: 4px !important;
+  text-align: center;
   background-color: #0d89ec !important;
 }
