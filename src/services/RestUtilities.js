@@ -1,4 +1,5 @@
 import AuthStore from "../stores/Auth";
+import { Toast } from "reactstrap";
 
 
 export default class RestUtilities {
@@ -136,14 +137,14 @@ export default class RestUtilities {
     
               }
               return response.json().then((responseContent) => {
-    
+   
                 let response = {
                   is_error: true,
-                  error_content: responseContent.value.data,
+                  error_content: responseContent,
                   content: null,
-                  count: responseContent.value.count
+                
                 };
-                if (responseContent.value.data.Message != undefined)
+               
                  
     
                 return response;

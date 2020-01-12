@@ -6,6 +6,8 @@ import Login from './components/Login';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Register from './components/Register'
 import ProfileComponent from './components/UserProfile/ProfileComponent';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class App extends Component {
   render() {

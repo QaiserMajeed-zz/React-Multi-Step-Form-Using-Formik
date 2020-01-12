@@ -42,7 +42,7 @@ export class MainForm extends Component {
           const element = result[index];
           var obj = {
             label: element.name,
-            text: element.alpha3Code
+            value: element.alpha3Code
           }
           arr.push(obj);
         }
@@ -51,6 +51,7 @@ export class MainForm extends Component {
         this.setState({
           nationalities: arr,
           services: qs.fetchAllServices().offered_services,
+
           //   questions: qs.fetchAllQuestions().questions,
 
         })
@@ -67,9 +68,15 @@ export class MainForm extends Component {
 
 
   getQuestionsBySelectedService(service) {
+
     let item = qs.fetchQuestionByServiceId(service[service.length - 1].label);
-    let items = [] = this.state.questions
-    items.push(item);
+    let items = this.state.questions;
+    for (let index = 0; index < item.length; index++) {
+      const element = item[index];
+      items.push(element)
+    }
+    // debugger
+    // items.length == 0 ? items.push(item):items[0].push(item)
     this.setState({
       questions: items
     })
@@ -117,6 +124,9 @@ export class MainForm extends Component {
           days: [],
           fromHour: '',
 
+          //GENERAL QUESTIONS
+          generalQuestions: qs.fetchAllGeneralQuestion()
+
           //EMPLOYMENT HISTORY
 
 
@@ -162,10 +172,10 @@ export class MainForm extends Component {
 
           {props => (
             <GeneralQuestions
-              values={props.values}
-              errors={props.errors}
-              touched={props.touched}
-              props={props}
+            values={props.values.generalQuestions}
+            errors={props.errors}
+            touched={props.touched}
+            props={props}
 
             />
           )}
@@ -189,7 +199,7 @@ export class MainForm extends Component {
         >
           {props => (
             <MCQWizard
-            values={this.state.questions[0]}
+              values={this.state.questions}
 
 
             />

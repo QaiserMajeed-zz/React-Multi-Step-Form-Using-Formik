@@ -3,6 +3,9 @@ import { FormGroup, Col, Button } from "reactstrap";
 import ReactFlagsSelect from 'react-flags-select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+import { toast } from 'react-toastify';
+import * as toastr from 'toastr';
+
 import {
     Formik,
     Form,
@@ -47,8 +50,11 @@ class UserDetails extends Component {
 
                                 auth.signIn(fields).then(response => {
                                     if (!response.is_error) {
-                                        alert('SUCCESS!! :-)\n\n' + JSON.stringify(fields, null, 4))
                                         this.props.history.push("/profile");
+                                    }
+                                    else{
+                                        debugger
+                                        toastr.error(response.error_content.error.toString());
                                     }
                                 })
                             }}
@@ -56,7 +62,6 @@ class UserDetails extends Component {
                                 <Form>
                                     <FormGroup>
                                         <Col sm="12" md={{ size: 9, offset: 5 }}>
-                                            <FontAwesomeIcon style={{ 'color': "#007bff" }} size={'3x'}  icon={faSignInAlt} />
                                         </Col>
                                     </FormGroup>
 

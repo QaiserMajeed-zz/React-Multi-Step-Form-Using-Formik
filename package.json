@@ -20,7 +20,10 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "1.1.5",
     "react-select": "^3.0.8",
+    "react-toastify": "^5.5.0",
     "reactstrap": "8.2.0",
+    "toaster": "^0.1.2",
+    "toastr": "^2.1.4",
     "yup": "^0.28.0"
   },
   "scripts": {

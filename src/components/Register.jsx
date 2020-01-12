@@ -62,7 +62,6 @@ class Register extends Component {
                                 let auth = new AuthService();
                                 auth.register(fields).then(response => {
                                     if (!response.is_error) {
-                                        alert('SUCCESS!! :-)\n\n' + JSON.stringify(fields, null, 4))
                                         this.props.history.push("/login");
                                     }
                                 })
