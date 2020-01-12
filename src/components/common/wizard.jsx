@@ -85,7 +85,9 @@ export class Wizard extends React.Component {
                                             <FontAwesomeIcon style={{ 'color': "#007bff" }} onClick={this.back} icon={faArrowLeft} />
                                             <Label>Back</Label>
                                         </button>
-                                    )}
+                                    ) }
+
+
 
                                     {!isLastPage && <button type="Submit" className="float-right border-0 bg-transparent" >
                                         <Label>Next</Label>
