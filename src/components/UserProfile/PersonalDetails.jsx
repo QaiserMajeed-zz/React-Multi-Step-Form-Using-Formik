@@ -28,46 +28,46 @@ const options = [
 
 const customStyles = {
   option: (provided, state) => ({
-    
-    ...provided,  
-    backgroundColor:'white',
-      color:"#0d89ec",
-    
+
+    ...provided,
+    backgroundColor: 'white',
+    color: "#0d89ec",
+
   }),
   control: (base, state) => ({
     ...base,
-   
-    borderRadius:  "8px" ,
+
+    borderRadius: "8px",
     // Overwrittes the different states of border
     borderColor: "#0d89ec",
-   
+
     // Removes weird border around container
-    
+
   }),
-  
+
   placeholder: base => ({
     ...base,
     // kill the white space on first and last option
-    color:"#0d89ec",
-    opacity:'.5'
+    color: "#0d89ec",
+    opacity: '.5'
   })
 };
 
 
-const PersonalDetails = ({ values, errors, touched,setFieldValue }) => (
-  
+const PersonalDetails = ({ values, errors, touched, setFieldValue }) => (
+
   <Fragment>
     {/* <pre>{JSON.stringify(values, null, 2)}</pre>
     <pre>{JSON.stringify(errors, null, 2)}</pre> */}
     <FormGroup>
       <Col sm="12" md={{ size: 9, offset: 4 }}>
-        <FontAwesomeIcon style={{  'color': "#007bff" }} size={'3x'} icon={faUserCircle} />
+        <FontAwesomeIcon style={{ 'color': "#007bff" }} size={'3x'} icon={faUserCircle} />
       </Col>
     </FormGroup>
 
     <FormGroup>
       <Col sm="12" md={{ size: 10, offset: 1 }}>
-     
+
         <DatePickerField
           name='dateOfBirth'
           value={values.dateOfBirth}
@@ -85,10 +85,9 @@ const PersonalDetails = ({ values, errors, touched,setFieldValue }) => (
           searchPlaceholder="Select Nationality"
           name="nationality"
           options={values.nationality}
-         component={SelectField}
-         styles={customStyles}
-        //  className="form-control"
-           />
+          component={SelectField}
+          styles={customStyles}
+        />
 
         <ErrorMessage name="lastName" component="div" className="invalid-feedback" />
       </Col>

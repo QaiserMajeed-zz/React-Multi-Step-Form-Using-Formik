@@ -19,11 +19,11 @@ export const SelectField = ({
   styles
   // isClearable
 }) => (
-  
+
     <Select
       options={options}
       name={field.name}
-     
+      onChange={onChange}
       isMulti={isMulti}
       onBlur={onBlur ? onBlur : field.onBlur}
       isDisabled={isDisabled}
@@ -32,7 +32,7 @@ export const SelectField = ({
       defaultValue={defaultValue}
       className={className}
       styles={styles}
-    
+
     // isClearable={true}
     //  isSearchable={true}
     />

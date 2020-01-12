@@ -72,7 +72,7 @@ export class Wizard extends React.Component {
                 <div className="col-md-4" style={{ backgroundColor: 'white', paddingTop: '15px', borderRadius: '10px' }} >
                     <Formik
                         initialValues={values}
-                        enableReinitialize={true}
+                        enableReinitialize={false}
                         validate={this.validate}
                         onSubmit={this.handleSubmit}
                         render={props => (
@@ -87,9 +87,9 @@ export class Wizard extends React.Component {
                                         </button>
                                     )}
 
-                                    {!isLastPage && <button className="float-right border-0 bg-transparent" >
+                                    {!isLastPage && <button type="Submit" className="float-right border-0 bg-transparent" >
                                         <Label>Next</Label>
-                                        <FontAwesomeIcon style={{ 'color': "#007bff" }} onClick={this.saveAndContinue} icon={faArrowRight} />
+                                        <FontAwesomeIcon style={{ 'color': "#007bff" }}  icon={faArrowRight} />
                                     </button>}
 
                                 </FormGroup>

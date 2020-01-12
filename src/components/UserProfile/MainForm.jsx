@@ -1,32 +1,39 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import EmergencyContact from "./EmergencyContact";
 import PersonalDetails from "./PersonalDetails";
 import { References } from "./References";
 import { Wizard } from '../common/wizard';
+import QuestionsService from '../../services/Questions'
+import QuestionsComponent from "./Questions";
+import { MCQWizard } from "./MCQWizard";
+import GeneralQuestions from "./GeneralQuestions";
+import { Availability } from "./Availability";
+import EmpHistory from "./EmploymentHistory";
 
+var qs = new QuestionsService();
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 export const required = value => (value ? undefined : "Required");
 
+var that = ""
 export class MainForm extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       nationalities: [],
+      services: [],
+      questions: ""
     };
+    that = this;
   }
-
-
-
 
   componentDidMount() {
 
-    
-    fetch('https://restcountries.eu/rest/v2/all', {  method: 'get' })
+    fetch('https://restcountries.eu/rest/v2/all', { method: 'get' })
       .then(response => response.json())
       .then(result => {
-        debugger
+
         var arr = [];
         for (let index = 0; index < result.length; index++) {
           const element = result[index];
@@ -36,8 +43,14 @@ export class MainForm extends Component {
           }
           arr.push(obj);
         }
-debugger
-        this.setState({ nationalities: arr })
+        console.log(arr);
+
+        this.setState({
+          nationalities: arr,
+          services: qs.fetchAllServices().offered_services,
+          //   questions: qs.fetchAllQuestions().questions,
+
+        })
         console.log(result)
       })
 
@@ -49,9 +62,22 @@ debugger
   }
 
 
+
+  getQuestionsBySelectedService(service) {
+    debugger
+    this.setState({
+
+      questions: qs.fetchQuestionByServiceId("Ironing")
+    })
+
+  }
+
   render() {
 
+
+
     return (
+
       this.state.nationalities.length > 0 && <Wizard
         initialValues={{
           dateOfBirth: "",
@@ -65,6 +91,13 @@ debugger
           emergencyFullName: '',
           relation: '',
           emergencyTelephone: '',
+          //GENERAL QUESTIONS
+
+          //SERVICE OFFERD
+          //QUESTION AWNSERS AND SERVICES
+          services: this.state.services,
+          questions: this.state.questions,
+
           //REFRENCES
           employmentReferences: [
             {
@@ -73,9 +106,13 @@ debugger
               employerAddress: '',
               employerEmail: '',
             },
-
-
           ],
+          //AVAILABILIY
+          alwaysAvailable: false,
+          days: [],
+          fromHour: '',
+
+          //EMPLOYMENT HISTORY
 
 
         }}
@@ -88,43 +125,11 @@ debugger
         }}>
 
         <Wizard.Page
-          validate={values => {
-            const errors = {};
 
-            if (!values.home) {
-              errors.home = "Please Enter Home Details";
-            }
-            return errors;
-          }}
           headingText={'Personal Details'}>
 
           {props => (
-            
-             < PersonalDetails
-             values={props.values}
-             errors={props.errors}
-             touched={props.touched}
-             setFieldValue={props.setFieldValue}
-            //nationalities={this.}
-
-
-            />
-          )}
-        </Wizard.Page>
-
-        <Wizard.Page
-          validate={values => {
-            const errors = {};
-
-            if (!values.home) {
-              errors.home = "Please Enter Home Details";
-            }
-            return errors;
-          }}
-          headingText={'Emergency Contact'}>
-
-          {props => (
-            <EmergencyContact
+            <PersonalDetails
               values={props.values}
               errors={props.errors}
               touched={props.touched}
@@ -134,16 +139,48 @@ debugger
           )}
         </Wizard.Page>
 
+        <Wizard.Page
+
+          headingText={'Emergency Contact'}>
+
+          {props => (
+            <EmergencyContact
+              {...props}
+
+            />
+          )}
+        </Wizard.Page>
 
         <Wizard.Page
-          validate={values => {
-            const errors = {};
 
-            if (!values.home) {
-              errors.home = "Please Enter Home Details";
-            }
-            return errors;
-          }}
+          headingText={'General Questions'}>
+
+          {props => (
+            <GeneralQuestions
+              values={props.values}
+              errors={props.errors}
+              touched={props.touched}
+              props={props}
+
+            />
+          )}
+        </Wizard.Page>
+
+        <Wizard.Page
+          headingText={'Services Offered'}
+        >
+          {props => (
+            <QuestionsComponent
+              {...props}
+              onServiceChange={this.getQuestionsBySelectedService.bind(this)}
+
+            />
+          )}
+
+        </Wizard.Page>
+
+        <Wizard.Page
+
           headingText={'References'}>
 
           {props => (
@@ -157,7 +194,34 @@ debugger
           )}
         </Wizard.Page>
 
+        <Wizard.Page
+          headingText={'Availability'}>
+          {props => (
+            <Availability
+              {...props}
+            />
+          )}
+        </Wizard.Page>
+
+        <Wizard.Page
+          headingText={'Employment History'}>
+          {props => (
+            <EmpHistory
+              {...props}
+            />
+          )}
+        </Wizard.Page>
+
       </Wizard>
+
+
+
+
+
+
+
+
+
 
 
     )

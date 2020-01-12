@@ -14,7 +14,7 @@ import {
 import * as Yup from 'yup';
 import Label from "reactstrap/lib/Label";
 
-const EmpHistory = ({ values, errors, touched }) =>
+const  EmpHistory = ({ values, errors, touched }) =>
   (
     <Fragment>
 
@@ -54,5 +54,5 @@ const EmpHistory = ({ values, errors, touched }) =>
   );
 
 
-
+export default EmpHistory;
 
