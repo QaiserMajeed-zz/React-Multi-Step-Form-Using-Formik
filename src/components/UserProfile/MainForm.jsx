@@ -5,7 +5,7 @@ import { References } from "./References";
 import { Wizard } from '../common/wizard';
 import QuestionsService from '../../services/Questions'
 import QuestionsComponent from "./Questions";
-import { MCQWizard } from "./MCQWizard";
+import MCQWizard from "./MCQWizard";
 import GeneralQuestions from "./GeneralQuestions";
 import { Availability } from "./Availability";
 import EmpHistory from "./EmploymentHistory";
@@ -16,14 +16,17 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 export const required = value => (value ? undefined : "Required");
 
 var that = ""
+var selectedQuestions: [];
 export class MainForm extends Component {
 
+  selectedQuestions: [];
   constructor(props) {
     super(props);
     this.state = {
       nationalities: [],
       services: [],
-      questions: ""
+      questions: [],
+
     };
     that = this;
   }
@@ -64,10 +67,11 @@ export class MainForm extends Component {
 
 
   getQuestionsBySelectedService(service) {
-    debugger
+    let item = qs.fetchQuestionByServiceId(service[service.length - 1].label);
+    let items = [] = this.state.questions
+    items.push(item);
     this.setState({
-
-      questions: qs.fetchQuestionByServiceId("Ironing")
+      questions: items
     })
 
   }
@@ -96,6 +100,7 @@ export class MainForm extends Component {
           //SERVICE OFFERD
           //QUESTION AWNSERS AND SERVICES
           services: this.state.services,
+          selectedServices: [],
           questions: this.state.questions,
 
           //REFRENCES
@@ -176,6 +181,20 @@ export class MainForm extends Component {
 
             />
           )}
+
+
+        </Wizard.Page>
+        <Wizard.Page
+          headingText={'Questions'}
+        >
+          {props => (
+            <MCQWizard
+            values={this.state.questions[0]}
+
+
+            />
+          )}
+
 
         </Wizard.Page>
 

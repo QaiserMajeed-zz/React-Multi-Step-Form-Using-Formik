@@ -6,7 +6,7 @@ import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
 
 
-function MCQWizard({ values, errors, touched }) {
+function MCQWizard( values, errors, touched ) {
     const [questionNumber, setNumber] = useState(0);
     debugger
     useEffect(() => {
@@ -14,11 +14,11 @@ function MCQWizard({ values, errors, touched }) {
     }, [setNumber]);
     return (
         <Col sm="12" >
-            {questionNumber < values.length ? (<div className="quiz">
+            {questionNumber < values.values.length ? (<div className="quiz">
                 <div className="output">
                     <h3 style={{ textAlign: 'center' }}>{`Question ${questionNumber + 1}`} </h3>
-                    <p>{values[questionNumber].Question}</p>
-                    {values[questionNumber].Options.length > 0 && <Option options={values[questionNumber].Options} />}
+                    <p>{values.values[questionNumber].Question}</p>
+                    {values.values[questionNumber].Options.length > 0 && <Option options={values.values[questionNumber].Options} />}
                 </div>
 
                 <Button onClick={() => { setNumber(questionNumber + 1) }} className="btn btn-primary" style={{ display: "inline-block" }}>Next</Button>

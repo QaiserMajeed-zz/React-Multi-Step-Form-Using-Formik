@@ -1,11 +1,11 @@
 import RestUtilities from './RestUtilities';
 
 const offered_services = [
-    { label: "Ironing", text: 'Ironing' },
-    { label: "Dish Washing", text: 'Ironing' },
-    { label: "Cleaning", text: '3' },
-    { label: "Dusting", text: 'Dusting' },
-    { label: "Baby Sitting", text: '5' }
+    { label: "Ironing", value: '1' },
+    { label: "Dish Washing", value: '2' },
+    { label: "Cleaning", value: '3' },
+    { label: "Dusting", value: '4' },
+    { label: "Baby Sitting", value: '5' }
 ]
 const questions = {
     "Ironing": [

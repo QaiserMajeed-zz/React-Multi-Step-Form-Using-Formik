@@ -16,7 +16,8 @@ export const SelectField = ({
   defaultText,
   onBlur,
   className,
-  styles
+  styles,
+  classNamePrefix
   // isClearable
 }) => (
 
@@ -32,7 +33,7 @@ export const SelectField = ({
       defaultValue={defaultValue}
       className={className}
       styles={styles}
-
+      classNamePrefix={"select"}
     // isClearable={true}
     //  isSearchable={true}
     />

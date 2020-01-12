@@ -31,24 +31,19 @@ function QuestionsComponent({ values, errors, touched, onServiceChange }) {
           placeholder="Select Service"
           searchable={true}
           searchPlaceholder="Select Service"
-          name="services"
+          name="selectedServices"
           options={values.services}
           component={SelectField}
-          onChange={(s) => values.questions = qs.fetchQuestionByServiceId(s.label)}
+          className="basic-multi-select"
+          classNamePrefix="select"
+           onChange={ onServiceChange}
+          isMulti={true}
         />
         {/* <ErrorMessage name="lastName" component="div" className="invalid-feedback" /> */}
       </Col>
     </FormGroup>
 
-    {values.questions.length > 0 &&
-
-      <MCQWizard
-        values={values.questions}
-        errors={errors}
-        touched={touched}
-      />
-
-    }
+   
 
 
   </Fragment>)
