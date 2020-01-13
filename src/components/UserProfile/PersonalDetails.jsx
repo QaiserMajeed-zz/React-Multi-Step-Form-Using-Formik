@@ -108,7 +108,7 @@ const PersonalDetails = ({ values, errors, touched, setFieldValue }) => (
         <Field
           name="home"
           type="text"
-          placeholder="Home"
+          placeholder="Home Number"
           validate="Required"
           className={'form-control' + (errors.home && touched.home ? ' is-invalid' : '')} />
         <ErrorMessage name="home" component="div" className="invalid-feedback" />
@@ -116,7 +116,7 @@ const PersonalDetails = ({ values, errors, touched, setFieldValue }) => (
     </FormGroup>
     <FormGroup>
       <Col sm="12" md={{ size: 10, offset: 1 }}>
-        <Field name="mobile" type="text" placeholder='Mobile' className={'form-control' + (errors.confirmPassword && touched.confirmPassword ? ' is-invalid' : '')} />
+        <Field name="mobile" type="text" placeholder='Mobile Number' className={'form-control' + (errors.confirmPassword && touched.confirmPassword ? ' is-invalid' : '')} />
         <ErrorMessage name="mobile" component="div" className="invalid-feedback" />
       </Col>
     </FormGroup>

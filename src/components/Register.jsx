@@ -27,7 +27,7 @@ class Register extends Component {
             <Fragment>
                 <NavbarComponent {...this.props} />
                 <div class="d-flex align-items-center flex-column  h-100 text-white" >
-                    <h1 className="display-4" style={{ padding: '5px', color: 'white', fontSize: '50px' }}>Create An Account </h1>
+                    <h3 className="display-4" style={{ marginTop:'50px', padding: '5px', color: 'white', fontSize: '40px',marginRight:'180px' }}>Create An Account </h3>
                     <div className="col-md-4" style={{ paddingTop: '15px', borderRadius: '10px' }} >
                         <Formik
                             initialValues={{
@@ -42,8 +42,8 @@ class Register extends Component {
                             validationSchema={Yup.object().shape({
                                 first_name: Yup.string()
                                     .required('First Name is required'),
-                                last_name: Yup.string()
-                                    .required('Last Name is required'),
+                                // last_name: Yup.string()
+                                //     .required('Last Name is required'),
                                 username: Yup.string()
                                     .required('Username is required'),
                                 email: Yup.string()
@@ -75,56 +75,52 @@ class Register extends Component {
                             }}
                             render={({ errors, status, touched }) => (
                                 <Form>
-                                    <FormGroup>
-                                        <Col sm="12" md={{ size: 9, offset: 5 }}>
-                                            <FontAwesomeIcon style={{ 'color': "#007bff" }} size={'2x'}  icon={faUserPlus} />
-                                        </Col>
-                                    </FormGroup>
+                                   
 
                                     <FormGroup>
                                         <Col sm="12" md={{ size: 12 }}>
-                                            <Field name="first_name" placeholder="First Name" type="text" className={'form-control' + (errors.first_name && touched.first_name ? ' is-invalid' : '')} />
+                                            <Field name="first_name" placeholder="Enter First Name" type="text" className={'form-control-transparent' + (errors.first_name && touched.first_name ? ' is-invalid' : '')} />
                                             <ErrorMessage name="first_name" component="div" className="invalid-feedback" />
                                         </Col>
                                     </FormGroup>
-                                    <FormGroup>
+                                    {/* <FormGroup>
                                         <Col sm="12" md={{ size: 12 }}>
-                                            <Field name="last_name" placeholder="Last Name" type="text" className={'form-control' + (errors.last_name && touched.last_name ? ' is-invalid' : '')} />
+                                            <Field name="last_name" placeholder="Last Name" type="text" className={'form-control-transparent' + (errors.last_name && touched.last_name ? ' is-invalid' : '')} />
                                             <ErrorMessage name="last_name" component="div" className="invalid-feedback" />
                                         </Col>
-                                    </FormGroup>
+                                    </FormGroup> */}
                                     <FormGroup>
                                         <Col sm="12" md={{ size: 12 }}>
-                                            <Field name="email" placeholder="Email" type="text" className={'form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
+                                            <Field name="email" placeholder="Email/Phone Number" type="text" className={'form-control-transparent' + (errors.email && touched.email ? ' is-invalid' : '')} />
                                             <ErrorMessage name="email" component="div" className="invalid-feedback" />
                                         </Col>
                                     </FormGroup>
                                     <FormGroup>
                                         <Col sm="12" md={{ size: 12 }}>
-                                            <Field name="username" placeholder="username" type="text" className={'form-control' + (errors.username && touched.username ? ' is-invalid' : '')} />
+                                            <Field name="username" placeholder="username" type="text" className={'form-control-transparent' + (errors.username && touched.username ? ' is-invalid' : '')} />
                                             <ErrorMessage name="username" component="div" className="invalid-feedback" />
                                         </Col>
                                     </FormGroup>
                                     <FormGroup>
                                         <Col sm="12" md={{ size: 12 }}>
-                                            <Field name="password" type="password" placeholder="Password" className={'form-control' + (errors.password && touched.password ? ' is-invalid' : '')} />
+                                            <Field name="password" type="password" placeholder="Password" className={'form-control-transparent' + (errors.password && touched.password ? ' is-invalid' : '')} />
                                             <ErrorMessage name="password" component="div" className="invalid-feedback" />
                                         </Col>
                                     </FormGroup>
                                     <FormGroup>
                                         <Col sm="12" md={{ size: 12 }}>
-                                            <Field name="confirmPassword" type="password" placeholder='Confirm Password' className={'form-control' + (errors.confirmPassword && touched.confirmPassword ? ' is-invalid' : '')} />
+                                            <Field name="confirmPassword" type="password" placeholder='Confirm Password' className={'form-control-transparent' + (errors.confirmPassword && touched.confirmPassword ? ' is-invalid' : '')} />
                                             <ErrorMessage name="confirmPassword" component="div" className="invalid-feedback" />
                                         </Col>
                                     </FormGroup>
-                                    <FormGroup>
+                                    {/* <FormGroup>
                                         <Col sm="12" md={{ size: 12 }}>
-                                            <Field name="mobile_number" type="password" placeholder='Mobile Number' className={'form-control' + (errors.mobile_number && touched.mobile_number ? ' is-invalid' : '')} />
+                                            <Field name="mobile_number" type="text" placeholder='Mobile Number' className={'form-control-transparent' + (errors.mobile_number && touched.mobile_number ? ' is-invalid' : '')} />
                                             <ErrorMessage name="mobile_number" component="div" className="invalid-feedback" />
                                         </Col>
-                                    </FormGroup>
+                                    </FormGroup> */}
                                     <FormGroup>
-                                        <Button type="submit" className="custom-button float-right btn btn-secondary">
+                                        <Button type="submit" className="login-button float-right btn btn-secondary">
                                             Sign Up
 
                                         </Button>

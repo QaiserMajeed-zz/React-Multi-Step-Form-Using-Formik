@@ -54,7 +54,7 @@ const NavbarComponent = (props) => {
             <NavbarText>{props.location.state.response}</NavbarText>
           }
           {props.location.pathname === '/profile' &&
-            <NavbarText style={{margin:'3px'}}>
+            <NavbarText style={{marginLeft:'30px'}}>
               <Link to='/'>
                 <Button className='custom-button'>
                   Log Out </Button>

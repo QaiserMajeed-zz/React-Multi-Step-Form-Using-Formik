@@ -27,7 +27,7 @@ class UserDetails extends Component {
             <Fragment>
                 <NavbarComponent {...this.props} />
                 <div className="d-flex align-items-center flex-column  h-100 text-white" >
-                    <h1 className="display-4" style={{ padding: '5px', color: 'white', fontSize: '50px' }}>Login</h1>
+                    <h3 className="display-4" style={{ marginTop:'50px', padding: '5px', color: 'white', fontSize: '40px',marginRight:'300px' }}>Login </h3>
                     <div className="col-md-4" style={{ paddingTop: '15px', borderRadius: '10px' }} >
                         <Formik
                             initialValues={{
@@ -59,7 +59,7 @@ class UserDetails extends Component {
                                 })
                             }}
                             render={({ errors, status, touched }) => (
-                                <Form>
+                                <Form autocomplete="off">
                                     <FormGroup>
                                         <Col sm="12" md={{ size: 9, offset: 5 }}>
                                         </Col>
@@ -67,20 +67,20 @@ class UserDetails extends Component {
 
                                     <FormGroup>
                                         <Col sm="12" md={{ size: 12, offset: 0 }}>
-                                            <Field name="username" placeholder="User Name" type="text" className={'form-control' + (errors.firstName && touched.firstName ? ' is-invalid' : '')} />
+                                            <Field autocomplete="off" auto name="username" placeholder="User Name" type="text" className={'form-control-transparent' + (errors.firstName && touched.firstName ? ' is-invalid' : '')} />
                                             <ErrorMessage name="username" component="div" className="invalid-feedback" />
                                         </Col>
                                     </FormGroup>
 
                                     <FormGroup>
                                         <Col sm="12" md={{ size: 12, offset: 0 }}>
-                                            <Field name="password" type="password" placeholder="Password" className={'form-control' + (errors.password && touched.password ? ' is-invalid' : '')} />
+                                            <Field autocomplete="off" name="password" type="password" placeholder="Password" className={'form-control-transparent' + (errors.password && touched.password ? ' is-invalid' : '')} />
                                             <ErrorMessage name="password" component="div" className="invalid-feedback" />
                                         </Col>
                                     </FormGroup>
 
                                     <FormGroup>
-                                        <Button type="Submit" className="custom-button float-right ">
+                                        <Button type="Submit"  className=" float-right login-button ">
                                             Log In
 
                                         </Button>
