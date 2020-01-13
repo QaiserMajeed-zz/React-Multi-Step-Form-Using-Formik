@@ -82,32 +82,26 @@ export class Wizard extends React.Component {
                                     {page > 0 && (
                                         <button onClick={this.previous} style={{ outline: "none" }} className="float-left border-0 bg-transparent" >
 
-                                            <FontAwesomeIcon style={{ 'color': "#007bff" }}  icon={faArrowLeft} />
+                                            <FontAwesomeIcon style={{ 'color': "#007bff" }} icon={faArrowLeft} />
                                             <Label>Back</Label>
                                         </button>
-                                    ) }
+                                    )}
 
 
 
-                                    {!isLastPage && <button type="Submit" style={{ outline: "none" }}className="float-right border-0 bg-transparent" >
+                                    {!isLastPage && <button type="Submit" style={{ outline: "none" }} className="float-right border-0 bg-transparent" >
                                         <Label>Next</Label>
-                                        <FontAwesomeIcon style={{ 'color': "#007bff" }}  icon={faArrowRight} />
+                                        <FontAwesomeIcon style={{ 'color': "#007bff" }} icon={faArrowRight} />
                                     </button>}
+                                    {isLastPage && (
 
+                                        <button type="Submit" style={{ outline: "none" }} className="float-right border-0 bg-transparent" >
+                                            <Label>Save and Continue</Label>
+                                            <FontAwesomeIcon style={{ 'color': "#007bff" }} icon={faArrowRight} />
+                                        </button>
+
+                                    )}
                                 </FormGroup>
-
-
-                                {isLastPage && (
-                                    <FormGroup>
-                                        {/* <div>
-                                        <Button type="submit" className="btn btn-primary" disabled={props.isSubmitting}>
-                                            Submit
-                                        </Button>
-                                        </div> */}
-                                    </FormGroup>
-                                )}
-
-
 
                             </form>
                         )}

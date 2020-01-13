@@ -55,7 +55,7 @@ export class MainForm extends Component {
           //   questions: qs.fetchAllQuestions().questions,
 
         })
-      
+
       })
 
       .catch(error => {
@@ -125,10 +125,22 @@ export class MainForm extends Component {
           fromHour: '',
 
           //GENERAL QUESTIONS
-          generalQuestions: qs.fetchAllGeneralQuestion()
+          generalQuestions: qs.fetchAllGeneralQuestion(),
 
           //EMPLOYMENT HISTORY
-
+          empHistory: [
+            {
+              empHistoryName: '',
+              postiionTypeOfWork: '',
+              hoursWork: '',
+              salaryPerHour: '',
+              duration: '',
+              startDate: '',
+              leaveDate: '',
+              reason: '',
+              notes: ''
+            },
+          ],
 
         }}
         onSubmit={(values, actions) => {
@@ -172,10 +184,10 @@ export class MainForm extends Component {
 
           {props => (
             <GeneralQuestions
-            values={props.values.generalQuestions}
-            errors={props.errors}
-            touched={props.touched}
-            props={props}
+              values={props.values.generalQuestions}
+              errors={props.errors}
+              touched={props.touched}
+              props={props}
 
             />
           )}

@@ -125,32 +125,6 @@ export const References = ({ values, errors, touched, props }) =>
 
 
 
-const Example = (index, values, errors, touched, props) => (
-
-
-  <Fragment>
-    {
-
-      values.values.map((history, index) => (
-        index + 1 != values.values.length ?
-          (<Fragment key={index}>
-            <CardHeader color="blue" id={`toggler`} style={{ marginBottom: '1rem' }}>
-              {history.employerName}
-            </CardHeader>
-            <UncontrolledCollapse toggler="#toggler">
-              <Card>
-                <CardBody>
-                  {history.employerName}
-                </CardBody>
-              </Card>
-            </UncontrolledCollapse>
-          </Fragment>) : ''
-      ))})
-  </Fragment>
-
-
-
-);
 const FormArray = (index, employmentReferences, errors, touched, props) => (
 
 

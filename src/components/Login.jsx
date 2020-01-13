@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { FormGroup, Col, Button } from "reactstrap";
-import ReactFlagsSelect from 'react-flags-select';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
-import { toast } from 'react-toastify';
+
+
 import * as toastr from 'toastr';
 
 import {
