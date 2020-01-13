@@ -94,10 +94,13 @@ const PersonalDetails = ({ values, errors, touched, setFieldValue }) => (
     </FormGroup>
     <FormGroup>
       <Col sm="12" md={{ size: 10, offset: 1 }}>
-        <select className="form-control" name="Gender">
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-        </select>
+        <Field
+          placeholder="Select Gender"
+          name="gender"
+          options={[{ label: 'Male', text: '1' },{ label: 'Female', text: '2' }]}
+          component={SelectField}
+          styles={customStyles}
+        />
       </Col>
     </FormGroup>
     <FormGroup>

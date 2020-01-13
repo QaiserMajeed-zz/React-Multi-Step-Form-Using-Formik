@@ -28,7 +28,7 @@ class UserDetails extends Component {
         return (
             <Fragment>
                 <NavbarComponent {...this.props} />
-                <div class="d-flex align-items-center flex-column  h-100 text-white" >
+                <div className="d-flex align-items-center flex-column  h-100 text-white" >
                     <h1 className="display-4" style={{ padding: '5px', color: 'white', fontSize: '50px' }}>Login</h1>
                     <div className="col-md-4" style={{ paddingTop: '15px', borderRadius: '10px' }} >
                         <Formik
@@ -50,7 +50,9 @@ class UserDetails extends Component {
 
                                 auth.signIn(fields).then(response => {
                                     if (!response.is_error) {
-                                        this.props.history.push("/profile");
+                                        toastr.success(response.content.message.toString());
+                                        this.props.history.push("/profile",{ response: response.content.message });
+                                        
                                     }
                                     else{
                                         debugger
@@ -80,7 +82,7 @@ class UserDetails extends Component {
                                     </FormGroup>
 
                                     <FormGroup>
-                                        <Button type="Submit" className="blue-button">
+                                        <Button type="Submit" className="custom-button float-right ">
                                             Log In
 
                                         </Button>

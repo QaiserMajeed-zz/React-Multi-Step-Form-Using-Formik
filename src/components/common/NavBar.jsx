@@ -7,13 +7,14 @@ import {
   Nav,
   NavItem,
   NavLink,
+  NavbarText
 
 } from 'reactstrap';
 import Button from 'reactstrap/lib/Button';
 import { Link } from 'react-router-dom';
 
 const NavbarComponent = (props) => {
-  console.log("Nav", props.location)
+  console.log("Nav", props)
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -31,7 +32,7 @@ const NavbarComponent = (props) => {
               <NavLink href="/components/">Home</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">Info</NavLink>
+              <NavLink href="">Info</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="/components/">Jobs</NavLink>
@@ -49,10 +50,19 @@ const NavbarComponent = (props) => {
               Sign Up </Button>
 
           </Link>}
-          {props.location.pathname === '/profile' && <Link to='/'>
-            <Button className='custom-button'>
-              Log Out </Button>
-          </Link>}
+          {props.location.pathname === '/profile' &&
+            <NavbarText>{props.location.state.response}</NavbarText>
+          }
+          {props.location.pathname === '/profile' &&
+            <NavbarText style={{margin:'3px'}}>
+              <Link to='/'>
+                <Button className='custom-button'>
+                  Log Out </Button>
+              </Link>
+            </NavbarText>
+
+          }
+
         </Collapse>
       </Navbar>
     </div>

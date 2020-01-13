@@ -21,7 +21,7 @@ function GeneralQuestions( values, errors, touched ) {
                     {values.values[questionNumber].incorrect_answers.length > 0 && <Option options={values.values[questionNumber].incorrect_answers} />}
                 </div>
 
-                <Button onClick={() => { setNumber(questionNumber + 1) }} className="btn btn-primary" style={{ display: "inline-block" }}>Next</Button>
+                <Button onClick={() => { setNumber(questionNumber + 1) }} className="" style={{ marginLeft: "36%",backgroundColor: 'rgb(13, 152, 241)', }}>Next</Button>
             </div>) : <h1>Finished !</h1>}
 
         </Col >)

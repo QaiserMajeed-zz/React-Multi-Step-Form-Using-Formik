@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
-import { FormGroup, Col,Row, Label } from "reactstrap";
+import { FormGroup, Col, Row, Label } from "reactstrap";
 import { Collapse, CardBody, Card, CardHeader } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faTrash, faPlusCircle, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import {
   Field,
   FieldArray,
@@ -101,19 +101,16 @@ export const References = ({ values, errors, touched, props }) =>
                   </Fragment>)
 
               ))}
-              <Row></Row>
             <div className="row">
-              <FormGroup >
-                <div className="float-right" style={{ color: 'rgb(0, 123, 255)' }} onClick={() => {
-                  push({
-                    employerName: '',
-                    employerTelNumber: '',
-                    employerAddress: '',
-                    employerEmail: '',
-                  })
-                }}>Add New Reference+</div>
-              </FormGroup>
 
+              <FontAwesomeIcon style={{ 'color': "#007bff",margin:'auto' }} size={'2x'} onClick={() => {
+                push({
+                  employerName: '',
+                  employerTelNumber: '',
+                  employerAddress: '',
+                  employerEmail: '',
+                })
+              }} icon={faPlusSquare} />
             </div>
           </div>
 

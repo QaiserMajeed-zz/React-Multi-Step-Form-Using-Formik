@@ -55,7 +55,7 @@ export class MainForm extends Component {
           //   questions: qs.fetchAllQuestions().questions,
 
         })
-        console.log(result)
+      
       })
 
       .catch(error => {

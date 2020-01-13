@@ -13,6 +13,7 @@ import * as Yup from 'yup';
 import Label from "reactstrap/lib/Label";
 import NavbarComponent from "./common/NavBar";
 import AuthService from './../services/Auth'
+import * as toastr from 'toastr';
 
 class Register extends Component {
     saveAndContinue = e => {
@@ -62,7 +63,13 @@ class Register extends Component {
                                 let auth = new AuthService();
                                 auth.register(fields).then(response => {
                                     if (!response.is_error) {
+                                        toastr.success(response.content.message.toString());
                                         this.props.history.push("/login");
+                                        
+                                       
+                                    }
+                                    else{
+                                        toastr.error(response.error_content.error.toString());
                                     }
                                 })
                             }}
@@ -117,7 +124,7 @@ class Register extends Component {
                                         </Col>
                                     </FormGroup>
                                     <FormGroup>
-                                        <Button type="submit" className="blue-button">
+                                        <Button type="submit" className="custom-button float-right btn btn-secondary">
                                             Sign Up
 
                                         </Button>
