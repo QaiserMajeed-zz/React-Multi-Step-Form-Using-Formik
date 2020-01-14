@@ -55,8 +55,8 @@ class Register extends Component {
                                 confirmPassword: Yup.string()
                                     .oneOf([Yup.ref('password'), null], 'Passwords must match')
                                     .required('Confirm Password is required'),
-                                mobile_number: Yup.string()
-                                    .required('Mobile Number is required'),
+                                // mobile_number: Yup.string()
+                                //     .required('Mobile Number is required'),
                             })}
                             onSubmit={fields => {
 

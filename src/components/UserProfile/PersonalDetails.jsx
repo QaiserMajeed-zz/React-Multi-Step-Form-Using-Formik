@@ -83,10 +83,12 @@ const PersonalDetails = ({ values, errors, touched, setFieldValue }) => (
           placeholder="Select Nationality"
           searchable={true}
           searchPlaceholder="Select Nationality"
-          name="nationality"
+          name="selectedNationality"
           options={values.nationality}
           component={SelectField}
           styles={customStyles}
+          value={values.selectedNationality}
+          onChange={(value) => { setFieldValue("selectedNationality", value)}}
         />
 
         <ErrorMessage name="lastName" component="div" className="invalid-feedback" />
@@ -96,10 +98,12 @@ const PersonalDetails = ({ values, errors, touched, setFieldValue }) => (
       <Col sm="12" md={{ size: 10, offset: 1 }}>
         <Field
           placeholder="Select Gender"
-          name="gender"
+          name="selectedGender"
           options={[{ label: 'Male', text: '1' },{ label: 'Female', text: '2' }]}
           component={SelectField}
           styles={customStyles}
+          value={values.selectedGender}
+          onChange={(value) => { setFieldValue("selectedGender", value)}}
         />
       </Col>
     </FormGroup>

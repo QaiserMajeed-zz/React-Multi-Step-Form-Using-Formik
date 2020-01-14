@@ -68,16 +68,18 @@ export class MainForm extends Component {
 
 
   getQuestionsBySelectedService(service) {
-
+    debugger
+  
+    //this.props.setFieldValue('selectedServices',service)
     let item = qs.fetchQuestionByServiceId(service[service.length - 1].label);
-    let items = this.state.questions;
+    let items = that.state.questions;
     for (let index = 0; index < item.length; index++) {
       const element = item[index];
       items.push(element)
     }
     // debugger
     // items.length == 0 ? items.push(item):items[0].push(item)
-    this.setState({
+    that.setState({
       questions: items
     })
 
@@ -93,7 +95,9 @@ export class MainForm extends Component {
         initialValues={{
           dateOfBirth: "",
           nationality: this.state.nationalities,
+          selectedNationality:[],
           gender: '',
+          selectedGender:[],
           home: '',
           mobile: '',
           currentAddress: '',
@@ -108,7 +112,7 @@ export class MainForm extends Component {
           //QUESTION AWNSERS AND SERVICES
           services: this.state.services,
           selectedServices: [],
-          
+
           questions: this.state.questions,
 
           //REFRENCES
@@ -121,12 +125,11 @@ export class MainForm extends Component {
             },
           ],
           //AVAILABILIY
-          alwaysAvailable: false,
-          days: [],
-          fromHour: '',
+          
 
           //GENERAL QUESTIONS
           generalQuestions: qs.fetchAllGeneralQuestion(),
+          selectedGAnswers:[],
 
           //EMPLOYMENT HISTORY
           empHistory: [
@@ -158,10 +161,7 @@ export class MainForm extends Component {
 
           {props => (
             <PersonalDetails
-              values={props.values}
-              errors={props.errors}
-              touched={props.touched}
-              props={props}
+              {...props}
 
             />
           )}
@@ -200,7 +200,7 @@ export class MainForm extends Component {
           {props => (
             <QuestionsComponent
               {...props}
-              onServiceChange={this.getQuestionsBySelectedService.bind(this)}
+              onServiceChange={this.getQuestionsBySelectedService}
 
             />
           )}

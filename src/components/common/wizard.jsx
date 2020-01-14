@@ -11,7 +11,7 @@ export const required = value => (value ? undefined : "Required");
 export const Error = ({ name }) => (
     <Field
         name={name}
-        render={({ form: { touched, errors } }) =>
+        render={({ form: { touched, errors,setFeildValue } }) =>
             touched[name] && errors[name] ? <span>{errors[name]}</span> : null
         }
     />

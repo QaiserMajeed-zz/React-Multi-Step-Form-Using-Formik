@@ -12,10 +12,13 @@ import * as Yup from 'yup';
 import Label from "reactstrap/lib/Label";
 import { SelectField } from "../common/SelectField";
 
+function handleChange(setFieldValue, services, onServiceChange) {
 
+
+}
 
 var qs = new QuestionsService();
-function QuestionsComponent({ values, errors, touched, onServiceChange }) {
+function QuestionsComponent({ values, errors, touched, onServiceChange, setFieldValue }) {
 
   return (<Fragment>
 
@@ -32,18 +35,20 @@ function QuestionsComponent({ values, errors, touched, onServiceChange }) {
           searchable={true}
           searchPlaceholder="Select Service"
           name="selectedServices"
+          value={values.selectedServices}
           options={values.services}
           component={SelectField}
           className="basic-multi-select"
           classNamePrefix="select"
-           onChange={ onServiceChange}
+          onChange={(value) => { setFieldValue("selectedServices", value); onServiceChange(value) }}
+         // onChange={(value)=>{handleChange(setFieldValue,value,onServiceChange)}}
           isMulti={true}
         />
         {/* <ErrorMessage name="lastName" component="div" className="invalid-feedback" /> */}
       </Col>
     </FormGroup>
 
-   
+
 
 
   </Fragment>)

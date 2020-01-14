@@ -34,6 +34,7 @@ export const SelectField = ({
       className={className}
       styles={styles}
       classNamePrefix={"select"}
+      value={value}
     // isClearable={true}
     //  isSearchable={true}
     />
