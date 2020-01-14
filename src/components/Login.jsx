@@ -14,6 +14,7 @@ import * as Yup from 'yup';
 import Label from "reactstrap/lib/Label";
 import NavbarComponent from "./common/NavBar";
 import AuthService from './../services/Auth'
+import Auth from "../stores/Auth";
 
 class UserDetails extends Component {
     saveAndContinue = e => {
@@ -49,6 +50,8 @@ class UserDetails extends Component {
                                 auth.signIn(fields).then(response => {
                                     if (!response.is_error) {
                                         toastr.success(response.content.message.toString());
+                                        Auth.setUser(response.content.message);
+
                                         this.props.history.push("/profile",{ response: response.content.message });
                                         
                                     }

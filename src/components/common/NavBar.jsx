@@ -13,6 +13,11 @@ import {
 import Button from 'reactstrap/lib/Button';
 import { Link } from 'react-router-dom';
 
+import AuthService from "../../services/Auth";
+import Auth from '../../stores/Auth';
+
+let auth=new AuthService();
+
 const NavbarComponent = (props) => {
   console.log("Nav", props)
   const [isOpen, setIsOpen] = useState(false);
@@ -51,11 +56,11 @@ const NavbarComponent = (props) => {
 
           </Link>}
           {props.location.pathname === '/profile' &&
-            <NavbarText>{props.location.state.response}</NavbarText>
+            <NavbarText>{Auth.getUser()}</NavbarText>
           }
           {props.location.pathname === '/profile' &&
             <NavbarText style={{marginLeft:'30px'}}>
-              <Link to='/'>
+              <Link onClick={()=>{auth.signOut()}} to='/'>
                 <Button className='custom-button'>
                   Log Out </Button>
               </Link>

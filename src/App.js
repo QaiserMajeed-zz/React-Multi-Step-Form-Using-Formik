@@ -1,13 +1,14 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import "./App.css";
 import Container from "reactstrap/lib/Container";
 import LayoutPage from "./components/LayoutPage/LayoutPage";
 import Login from './components/Login';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Register from './components/Register'
 import ProfileComponent from './components/UserProfile/ProfileComponent';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AuthService from '../src/services/Auth';
 
 class App extends Component {
   render() {
@@ -15,10 +16,10 @@ class App extends Component {
       <BrowserRouter basename={'/'}>
         <Container>
           <Switch>
-            <Route exact path={`/`} render={(props) => ( <LayoutPage {...props}/> )} />
-            <Route exact path={`/login`} render={(props) => ( <Login {...props}/> )} />
-            <Route exact path={`/register`} render={(props) => ( <Register {...props}/> )} />
-            <Route exact path={`/profile`} render={(props) => ( <ProfileComponent {...props}/> )} />
+            <PrivateRoute exact path={`/`} component={LayoutPage} />
+            <Route exact path={`/login`} component={Login} />
+            <Route exact path={`/register`} component={Register} />
+            <Route exact path={`/profile`} component={ProfileComponent} />
           </Switch>
         </Container>
       </BrowserRouter>
@@ -29,24 +30,42 @@ class App extends Component {
 
 export default App;
 
-// const DefaultLayout = ({ component: Component, ...rest }) => (
-//   <Route {...rest} render={props => (
-//     !AuthService.isSignedIn() ? (
-//       <div>
-//         <NavbarComponent {...props} />
-//         <Component {...props} />
 
-//       </div>
-//     ) : (
-//         <div>
-//           <NavbarComponent {...props} />
-//           <div className="container">
-//             <Component {...props} />
-//           </div>
-//         </div>
-//       )
-//   )} />
-// );
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      AuthService.isSignedIn() ? (
+        
+         
+          <Redirect
+            to={{
+              pathname: "/profile"
+            }}
+
+          />
+       
+      ) : (
+        <Component {...props} />
+        )
+    }
+  />
+);
+
+const DefaultLayout = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={props => (
+    !AuthService.isSignedIn() ? (
+      <Redirect to='/' />
+      //<LayoutPage {...props} />
+    ) : (
+        <Fragment>
+
+          <Component {...props} />
+        </Fragment>
+      )
+  )} />
+);
 
 // serviceWorker.register();
 
