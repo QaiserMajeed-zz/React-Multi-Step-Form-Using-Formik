@@ -83,14 +83,14 @@ export class Wizard extends React.Component {
                                         <button onClick={this.previous} style={{ outline: "none" }} className="float-left border-0 bg-transparent" >
 
                                             <FontAwesomeIcon style={{ 'color': "#007bff" }} icon={faArrowLeft} />
-                                            <Label>Back</Label>
+                                            <span style={{ 'color': "#007bff" }}>Back</span>
                                         </button>
                                     )}
 
 
 
                                     {!isLastPage && <button type="Submit" style={{ outline: "none" }} className="float-right border-0 bg-transparent" >
-                                        <Label>Next</Label>
+                                       <span style={{ 'color': "#007bff" }}>Next</span>
                                         <FontAwesomeIcon style={{ 'color': "#007bff" }} icon={faArrowRight} />
                                     </button>}
                                     {isLastPage && (
