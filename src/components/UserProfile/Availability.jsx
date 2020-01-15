@@ -1,48 +1,16 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import { FormGroup, Col } from "reactstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faArrowRight, faStopwatch } from '@fortawesome/free-solid-svg-icons';
+import { faStopwatch } from '@fortawesome/free-solid-svg-icons';
 import {
     Formik,
-
 
     Form,
     Field,
 
     ErrorMessage,
 } from 'formik';
-import moment from "moment";
-import DateTimeRangeContainer from "react-advanced-datetimerange-picker";
-
-let now = new Date();
-let start = moment(
-    new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0)
-);
-let end = moment(start)
-    .add(1, "days")
-    .subtract(1, "seconds");
-let ranges = {
-    "Today Only": [moment(start), moment(end)],
-    "Yesterday Only": [
-        moment(start).subtract(1, "days"),
-        moment(end).subtract(1, "days")
-    ],
-    "3 Days": [moment(start).subtract(3, "days"), moment(end)],
-    "5 Days": [moment(start).subtract(5, "days"), moment(end)],
-    "1 Week": [moment(start).subtract(7, "days"), moment(end)],
-    "2 Weeks": [moment(start).subtract(14, "days"), moment(end)],
-    "1 Month": [moment(start).subtract(1, "months"), moment(end)],
-    "1st August 18": [
-        moment("2018-08-01 00:00:00"),
-        moment("2018-08-02 23:59:59")
-    ],
-    "1 Year": [moment(start).subtract(1, "years"), moment(end)]
-};
-let local = {
-    format: "DD-MM-YYYY HH:mm",
-    sundayFirst: false
-};
-let maxDate = moment(end).add(24, "hour");
+import { Checkbox } from "../common/checkbox";
 
 export function Availability({ values, errors, touched }) {
 
@@ -54,57 +22,253 @@ export function Availability({ values, errors, touched }) {
                 </Col>
             </FormGroup>
 
-            {renderPickerAutoApplyPastFriendly(ranges, local, maxDate, false)}
+            <div class="form-row">
+                <div class="form-group col-md-5">
+                    <label for="inputCity">All Days</label>
 
+                    <Field
+                        component={Checkbox}
+                        name="availableDays.all.check"
+                        id="availableDays.all.check"
+                    // label="Agree to something"
+                    />
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputState">From</label>
+                    <Field
+                        //  disabled={true}
+                        name="availableDays.all.from"
+                        type="number"
+                        placeholder="From"
 
-        </Fragment>
+                        className={'form-control'} />
+                    <ErrorMessage name="home" component="div" className="invalid-feedback" />
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputZip">To</label>
+                    <Field
+                        //  disabled={true}
+                        name="availableDays.all.to"
+                        type="number"
+                        placeholder="To"
+
+                        className={'form-control'} />
+                    <ErrorMessage name="home" component="div" className="invalid-feedback" />
+                </div>
+            </div>
+            <fieldset disabled={values.availableDays.all.check}>
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        <label for="inputCity">Day</label>
+
+                        <input
+                            disabled={true}
+                            name="availableDays.sunday"
+                            type="text"
+                            value="Sunday"
+                            className={'form-control'} />
+                        <ErrorMessage name="home" component="div" className="invalid-feedback" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputState">From</label>
+                        <Field
+                            //  disabled={true}
+                            name="availableDays.sunday.from"
+                            type="number"
+                            placeholder="From"
+
+                            className={'form-control'} />
+                        <ErrorMessage name="home" component="div" className="invalid-feedback" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputZip">To</label>
+                        <Field
+                            //  disabled={true}
+                            name="availableDays.sunday.to"
+                            type="number"
+                            placeholder="To"
+
+                            className={'form-control'} />
+                        <ErrorMessage name="home" component="div" className="invalid-feedback" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        <input
+                            disabled={true}
+                            name="availableDays.monday"
+                            type="text"
+                            value="monday"
+                            className={'form-control'} />
+                        <ErrorMessage name="Monday" component="div" className="invalid-feedback" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <Field
+                            //  disabled={true}
+                            name="availableDays.monday.from"
+                            type="number"
+                            placeholder="From"
+
+                            className={'form-control'} />
+                        <ErrorMessage name="home" component="div" className="invalid-feedback" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <Field
+                            //  disabled={true}
+                            name="availableDays.monday.to"
+                            type="number"
+                            placeholder="To"
+
+                            className={'form-control'} />
+                        <ErrorMessage name="home" component="div" className="invalid-feedback" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        <input
+                            disabled={true}
+                            name="availableDays.tuesday"
+                            type="text"
+                            value="Tuesday"
+                            className={'form-control'} />
+                        <ErrorMessage name="home" component="div" className="invalid-feedback" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <Field
+                            name="availableDays.tuesday.from"
+                            type="number"
+                            placeholder="From"
+
+                            className={'form-control'} />
+                        <ErrorMessage name="home" component="div" className="invalid-feedback" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <Field
+                            name="availableDays.tuesday.to"
+                            type="number"
+                            placeholder="To"
+                            className={'form-control'} />
+                        <ErrorMessage name="home" component="div" className="invalid-feedback" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        <input
+                            disabled={true}
+                            name="availableDays.wednesday"
+                            type="text"
+                            value="Wednesday"
+                            className={'form-control'} />
+                        <ErrorMessage name="home" component="div" className="invalid-feedback" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <Field
+                            name="availableDays.wednesday.from"
+                            type="number"
+                            placeholder="From"
+
+                            className={'form-control'} />
+                        <ErrorMessage name="home" component="div" className="invalid-feedback" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <Field
+                            name="availableDays.wednesday.to"
+                            type="number"
+                            placeholder="To"
+                            className={'form-control'} />
+                        <ErrorMessage name="home" component="div" className="invalid-feedback" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        <input
+                            disabled={true}
+                            name="availableDays.thursday"
+                            type="text"
+                            value="Thursday"
+                            className={'form-control'} />
+                        <ErrorMessage name="home" component="div" className="invalid-feedback" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <Field
+                            name="availableDays.thursday.from"
+                            type="number"
+                            placeholder="From"
+
+                            className={'form-control'} />
+                        <ErrorMessage name="home" component="div" className="invalid-feedback" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <Field
+                            name="availableDays.thursday.to"
+                            type="number"
+                            placeholder="To"
+                            className={'form-control'} />
+                        <ErrorMessage name="home" component="div" className="invalid-feedback" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        <input
+                            disabled={true}
+                            name="availableDays.friday"
+                            type="text"
+                            value="Friday"
+                            className={'form-control'} />
+                        <ErrorMessage name="home" component="div" className="invalid-feedback" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <Field
+                            name="availableDays.friday.from"
+                            type="number"
+                            placeholder="From"
+
+                            className={'form-control'} />
+                        <ErrorMessage name="home" component="div" className="invalid-feedback" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <Field
+                            name="availableDays.friday.to"
+                            type="number"
+                            placeholder="To"
+                            className={'form-control'} />
+                        <ErrorMessage name="home" component="div" className="invalid-feedback" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        <input
+                            disabled={true}
+                            name="availableDays.saturday"
+                            type="text"
+                            value="Saturday"
+                            className={'form-control'} />
+                        <ErrorMessage name="home" component="div" className="invalid-feedback" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <Field
+                            name="availableDays.saturday.from"
+                            type="number"
+                            placeholder="From"
+
+                            className={'form-control'} />
+                        <ErrorMessage name="home" component="div" className="invalid-feedback" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <Field
+                            name="availableDays.saturday.to"
+                            type="number"
+                            placeholder="To"
+                            className={'form-control'} />
+                        <ErrorMessage name="home" component="div" className="invalid-feedback" />
+                    </div>
+                </div>
+            </fieldset>
+
+        </Fragment >
     )
 
-    function renderPickerAutoApplyPastFriendly(ranges, local, maxDate, descendingYears) {
-        let value = `${start.format(
-            "DD-MM-YYYY HH:mm"
-        )} - ${end.format("DD-MM-YYYY HH:mm")}`;
-        return (
-            <div>
-                <br />
-                <DateTimeRangeContainer
-                    ranges={ranges}
-                    start={start}
-                    end={end}
-                    local={local}
-                    maxDate={maxDate}
-                    // applyCallback={this.applyCallback}
-                    // rangeCallback={this.rangeCallback}
-                    autoApply
-                    descendingYears={descendingYears}
-                    years={[2010, 2020]}
-                    pastSearchFriendly
-                    smartMode
-                >
-                    <input
-                        className="form-control"
-                        id="formControlsTextB"
-                        type="text"
-                        label="Text"
-                        placeholder="Enter text"
-                        style={{ cursor: "pointer" }}
-                        value={value}
-                    />
-                </DateTimeRangeContainer>
-                <div >
 
-                </div>
-                <br />
-            </div>
-        );
-    }
-
-    function applyCallback(startDate, endDate) {
-        console.log("Apply Callback");
-        console.log(startDate.format("DD-MM-YYYY HH:mm"));
-        console.log(endDate.format("DD-MM-YYYY HH:mm"));
-
-    }
 
 }
 

@@ -69,7 +69,7 @@ export class MainForm extends Component {
 
   getQuestionsBySelectedService(service) {
     debugger
-  
+
     //this.props.setFieldValue('selectedServices',service)
     let item = qs.fetchQuestionByServiceId(service[service.length - 1].label);
     let items = that.state.questions;
@@ -95,9 +95,9 @@ export class MainForm extends Component {
         initialValues={{
           dateOfBirth: "",
           nationality: this.state.nationalities,
-          selectedNationality:[],
+          selectedNationality: [],
           gender: '',
-          selectedGender:[],
+          selectedGender: [],
           home: '',
           mobile: '',
           currentAddress: '',
@@ -125,7 +125,20 @@ export class MainForm extends Component {
             },
           ],
           //AVAILABILIY
-          
+
+          availableDays:
+          {
+            "all": { "check": false, "from": "", "to": "" },
+            "sunday": { "from": "", "to": "" },
+            "monday": { "from": "", "to": "" },
+            "tuesday": { "from": "", "to": "" },
+            "wednesday": { "from": "", "to": "" },
+            "thursday": { "from": "", "to": "" },
+            "friday": { "from": "", "to": "" },
+            "saturday": { "from": "", "to": "" },
+          },
+
+
 
           //GENERAL QUESTIONS
           general_Questions: qs.fetchAllGeneralQuestion(),
@@ -149,10 +162,19 @@ export class MainForm extends Component {
         onSubmit={(values, actions) => {
           console.log(actions);
           sleep(300).then(() => {
-            console.log( JSON.stringify(values, null, 2));
+            console.log(JSON.stringify(values, null, 2));
             actions.setSubmitting(false);
           });
         }}>
+
+        {/* <Wizard.Page
+          headingText={'Availability'}>
+          {props => (
+            <Availability
+              {...props}
+            />
+          )}
+        </Wizard.Page> */}
 
         <Wizard.Page
 
@@ -184,7 +206,7 @@ export class MainForm extends Component {
 
           {props => (
             <GeneralQuestions
-             {...props}
+              {...props}
 
             />
           )}
