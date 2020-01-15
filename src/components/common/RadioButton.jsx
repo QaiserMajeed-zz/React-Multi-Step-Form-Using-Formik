@@ -1,16 +1,14 @@
-import * as React from "React";
+import React, { Component, Fragment } from "react";
 
 import classNames from "classnames";
 
-export const RadioButton = ({
-    //@ts-ignore
+
+  export const RadioButton = ({
     field: { name, value, onChange, onBlur },
-    //@ts-ignore
     id,
-    //@ts-ignore
     label,
-    //@ts-ignore
     className,
+    onSelect,
     ...props
   }) => {
     return (
@@ -22,11 +20,12 @@ export const RadioButton = ({
           value={id} // could be something else for output?
           checked={id === value}
           onChange={onChange}
+          onClick={onSelect}
+          className={className}
           onBlur={onBlur}
-          className={classNames("radio-button")}
           {...props}
         />
-        <label htmlFor={id}>{label}</label>
+        <label className="custom-control-label" htmlFor={id}>{label}</label>
       </div>
     );
   };

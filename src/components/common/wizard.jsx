@@ -80,9 +80,10 @@ export class Wizard extends React.Component {
                                 {React.cloneElement(activePage, { parentState: { ...props } })}
                                 <FormGroup>
                                     {page > 0 && (
-                                        <button onClick={this.previous} style={{ outline: "none" }} className="float-left border-0 bg-transparent" >
+                                        <button type="button" onClick={this.previous} style={{ outline: "none" }} className="float-left border-0 bg-transparent" >
 
                                             <FontAwesomeIcon style={{ 'color': "#007bff" }} icon={faArrowLeft} />
+
                                             <span style={{ 'color': "#007bff" }}>Back</span>
                                         </button>
                                     )}

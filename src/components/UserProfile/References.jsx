@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { FormGroup, Col, Row, Label } from "reactstrap";
 import { Collapse, CardBody, Card, CardHeader } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faTrash, faPlusCircle, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import { faAddressCard, faTrash, faPlusCircle, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import {
   Field,
   FieldArray,
@@ -15,7 +15,7 @@ export const References = ({ values, errors, touched, props }) =>
 
       <FormGroup>
         <Col sm="12" md={{ size: 9, offset: 4 }}>
-          <FontAwesomeIcon style={{ 'color': "#007bff" }} size={'3x'} icon={faUser} />
+          <FontAwesomeIcon style={{ 'color': "#007bff" }} size={'3x'} icon= {faAddressCard} />
         </Col>
       </FormGroup>
       {/* {values.employmentReferences.length > 1 && <Example values={values.employmentReferences} />} */}

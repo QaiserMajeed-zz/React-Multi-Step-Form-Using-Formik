@@ -1,7 +1,7 @@
 import React, { Component, Fragment, useState } from "react";
 import { FormGroup, Col } from "reactstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAmbulance, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import MCQWizard from './MCQWizard';
 import QuestionsService from '../../services/Questions'
 
@@ -24,7 +24,7 @@ function QuestionsComponent({ values, errors, touched, onServiceChange, setField
 
     <FormGroup>
       <Col sm="12" md={{ size: 9, offset: 4 }}>
-        <FontAwesomeIcon style={{ 'color': "#007bff" }} size={'3x'} icon={faAmbulance} />
+        <FontAwesomeIcon style={{ 'color': "#007bff" }} size={'3x'} icon={faCog} />
       </Col>
     </FormGroup>
     <FormGroup>

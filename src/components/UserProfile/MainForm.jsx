@@ -4,7 +4,7 @@ import PersonalDetails from "./PersonalDetails";
 import { References } from "./References";
 import { Wizard } from '../common/wizard';
 import QuestionsService from '../../services/Questions'
-import QuestionsComponent from "./Questions";
+import QuestionsComponent from "./Services";
 import MCQWizard from "./MCQWizard";
 import GeneralQuestions from "./GeneralQuestions";
 import { Availability } from "./Availability";
@@ -128,8 +128,7 @@ export class MainForm extends Component {
           
 
           //GENERAL QUESTIONS
-          generalQuestions: qs.fetchAllGeneralQuestion(),
-          selectedGAnswers:[],
+          general_Questions: qs.fetchAllGeneralQuestion(),
 
           //EMPLOYMENT HISTORY
           empHistory: [
@@ -150,7 +149,7 @@ export class MainForm extends Component {
         onSubmit={(values, actions) => {
           console.log(actions);
           sleep(300).then(() => {
-            window.alert(JSON.stringify(values, null, 2));
+            console.log( JSON.stringify(values, null, 2));
             actions.setSubmitting(false);
           });
         }}>
@@ -185,10 +184,7 @@ export class MainForm extends Component {
 
           {props => (
             <GeneralQuestions
-              values={props.values.generalQuestions}
-              errors={props.errors}
-              touched={props.touched}
-              props={props}
+             {...props}
 
             />
           )}
