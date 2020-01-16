@@ -11,7 +11,7 @@ export const required = value => (value ? undefined : "Required");
 export const Error = ({ name }) => (
     <Field
         name={name}
-        render={({ form: { touched, errors,setFeildValue } }) =>
+        render={({ form: { touched, errors, setFeildValue } }) =>
             touched[name] && errors[name] ? <span>{errors[name]}</span> : null
         }
     />
@@ -64,12 +64,13 @@ export class Wizard extends React.Component {
         const { children } = this.props;
         const { page, values } = this.state;
         const activePage = React.Children.toArray(children)[page];
-        console.log(activePage);
+        console.log("active page", activePage);
+        let className = activePage.key == ".2" ?'col-md-8':'col-md-4'
         const isLastPage = page === React.Children.count(children) - 1;
         return (
             <Fragment>
                 <h1 className="display-4" style={{ padding: '5px', color: 'white', fontSize: '30px' }}>{activePage.props.headingText}</h1>
-                <div className="col-md-4" style={{ backgroundColor: 'white', paddingTop: '15px', borderRadius: '10px' }} >
+                <div className={className} style={{ backgroundColor: 'white', paddingTop: '15px', borderRadius: '10px' }} >
                     <Formik
                         initialValues={values}
                         enableReinitialize={false}
@@ -91,7 +92,7 @@ export class Wizard extends React.Component {
 
 
                                     {!isLastPage && <button type="Submit" style={{ outline: "none" }} className="float-right border-0 bg-transparent" >
-                                       <span style={{ 'color': "#007bff" }}>Next</span>
+                                        <span style={{ 'color': "#007bff" }}>Next</span>
                                         <FontAwesomeIcon style={{ 'color': "#007bff" }} icon={faArrowRight} />
                                     </button>}
                                     {isLastPage && (
