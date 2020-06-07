@@ -1648,7 +1648,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.3, classnames@^2.2.5, classnames@^2.2.6:
+classnames@^2.1.2, classnames@^2.2.3, classnames@^2.2.5, classnames@^2.2.6:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
 
@@ -5476,6 +5476,11 @@ pako@~1.0.5:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.6.tgz#0101211baa70c4bca4a0f63f2206e97b7dfaf258"
 
+paper@^0.11.5:
+  version "0.11.8"
+  resolved "https://registry.yarnpkg.com/paper/-/paper-0.11.8.tgz#c395269e23e3bb456c9f9e88a2f87f4421bfef23"
+  integrity sha512-3O5o8SntwieIlBmHjWS4hAYESiZ0yb++Outz9Rr5AN/ZFK7jfVGLANjqyIvEKIpGMImf2fQCkW64n8dkYheP5g==
+
 param-case@2.1.x:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/param-case/-/param-case-2.1.1.tgz#df94fd8cf6531ecf75e6bef9a0858fbc72be2247"
@@ -6230,6 +6235,15 @@ react-datepicker@^2.10.1:
     prop-types "^15.7.2"
     react-onclickoutside "^6.9.0"
     react-popper "^1.3.4"
+
+react-daytime@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/react-daytime/-/react-daytime-1.3.0.tgz#5ea798d00cadfdc362d056d6e73e826744d8b21a"
+  integrity sha1-XqeY0Ayt/cNi0FbW5z6CZ0TYsho=
+  dependencies:
+    classnames "^2.1.2"
+    paper "^0.11.5"
+    uuid4 "^1.0.0"
 
 react-dev-utils@^5.0.2:
   version "5.0.2"
@@ -7823,6 +7837,11 @@ utils-merge@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
 
+uuid4@^1.0.0:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/uuid4/-/uuid4-1.1.4.tgz#80fa0618749110bdb8aa47cc2cc2167c6331f4eb"
+  integrity sha512-Gr1q2k40LpF8CokcnQFjPDsdslzJbTCTBG5xQIEflUov431gFkY5KduiGIeKYAamkQnNn4IfdHJbLnl9Bib8TQ==
+
 uuid@^3.0.1, uuid@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
@@ -7998,8 +8017,9 @@ websocket-driver@>=0.5.1:
     websocket-extensions ">=0.1.1"
 
 websocket-extensions@>=0.1.1:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.3.tgz#5d2ff22977003ec687a4b87073dfbbac146ccf29"
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.4.tgz#7f8473bc839dfd87608adb95d7eb075211578a42"
+  integrity sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==
 
 whatwg-encoding@^1.0.1:
   version "1.0.4"
